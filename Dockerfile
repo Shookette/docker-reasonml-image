@@ -1,0 +1,12 @@
+ARG IMAGE_VERSION=10
+FROM node:${IMAGE_VERSION}
+
+RUN npm install -g bs-platform@${BS_PLATFORM_VERSION} --unsafe-perm reason-cli@${REASON_CLI_VERSION}
+
+ARG USER_NAME=reason
+ARG BS_PLATFORM_VERSION=4.0.1
+ARG REASON_CLI_VERSION=3.2.0-linux
+
+RUN useradd -ms /bin/bash ${USER_NAME}
+USER ${USER_NAME}
+WORKDIR /home/${USER_NAME}
